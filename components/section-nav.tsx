@@ -38,7 +38,7 @@ export function SectionNav() {
             {index > 0 ? <span className="text-muted">/</span> : null}
             <a
               href={link.href}
-              aria-current={active === link.id ? "true" : undefined}
+              aria-current={active === link.id ? "location" : undefined}
               className={active === link.id ? "text-ink" : "text-muted"}
             >
               {link.label}

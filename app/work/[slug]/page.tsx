@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ViewTransition } from "react";
+import { HashLink } from "@/components/hash-link";
 import { SiteFrame, SectionHeading } from "@/components/site-frame";
 import { ProjectGallery } from "@/components/project-cover";
 import { WorkLink } from "@/components/work-link";
@@ -31,17 +32,25 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
     <SiteFrame>
       <article>
         <p className="text-[13px] font-bold tracking-[0.04em] text-muted uppercase">
-          <Link href="/#work" className="hover:text-ink">
+          <HashLink href="/#work" className="hover:text-ink">
             Index
-          </Link>
+          </HashLink>
           <span> / {project.status}</span>
         </p>
-        <h1 className="mt-4 max-w-[14ch] text-[clamp(2rem,5vw,2.5rem)] leading-[1.1] font-bold tracking-[-0.02em]">
-          {project.name}
-        </h1>
+        {project.images.length === 0 ? (
+          <ViewTransition name={`work-${project.slug}`} share="morph" default="none">
+            <h1 className="mt-4 max-w-[14ch] text-[clamp(2rem,5vw,2.5rem)] leading-[1.1] font-bold tracking-[-0.02em]">
+              {project.name}
+            </h1>
+          </ViewTransition>
+        ) : (
+          <h1 className="mt-4 max-w-[14ch] text-[clamp(2rem,5vw,2.5rem)] leading-[1.1] font-bold tracking-[-0.02em]">
+            {project.name}
+          </h1>
+        )}
         <p className="mt-5 max-w-[38rem] text-base leading-[1.45] text-muted">{project.summary}</p>
         <p className="mt-6 text-[13px]">
-          <a className="font-bold underline-offset-[3px] hover:underline" href={project.repo} target="_blank" rel="noreferrer">
+          <a className="font-bold underline-offset-[3px] hover:underline" href={project.repo} target="_blank" rel="noreferrer noopener">
             GitHub repository
           </a>
         </p>
@@ -84,7 +93,7 @@ export default async function WorkPage({ params }: { params: Promise<{ slug: str
         </section>
 
         <p className="mt-14 border-t border-line pt-6">
-          <WorkLink href={`/work/${next.slug}`} label={`Next case study, ${next.name}`} className="font-bold">
+          <WorkLink href={`/work/${next.slug}`} className="font-bold">
             Next · {next.name}
           </WorkLink>
         </p>

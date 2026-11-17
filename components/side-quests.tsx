@@ -17,7 +17,7 @@ export function SideQuests() {
             <a
               href={quest.href}
               target="_blank"
-              rel="noreferrer"
+              rel="noreferrer noopener"
               className="grid grid-cols-[48px_1fr] gap-x-4 py-[11px] sm:grid-cols-[48px_1fr_auto]"
             >
               <span className="row-span-2 grid h-12 w-12 place-items-center rounded-[4px] bg-ink text-[15px] font-bold text-paper">

@@ -10,7 +10,7 @@ export function GithubActivity({ data }: { data: GithubActivity }) {
       {data.ok ? (
         <>
           <p className="mb-4 text-muted">
-            <a className="text-ink underline-offset-[3px] hover:underline" href={profile.github}>
+            <a className="text-ink underline-offset-[3px] hover:underline" href={profile.github} target="_blank" rel="noreferrer noopener">
               {profile.githubHandle}
             </a>
             <span> · {data.publicRepos} public repositories</span>
@@ -18,9 +18,9 @@ export function GithubActivity({ data }: { data: GithubActivity }) {
           {data.events.length > 0 ? (
             <ul className="mb-6 border-b border-line">
               {data.events.map((event) => (
-                <li key={event.id} className="grid grid-cols-[5.5rem_1fr_auto] gap-3 border-t border-line py-3 text-[15px]">
+                <li key={event.id} className="grid grid-cols-1 gap-1 border-t border-line py-3 text-[15px] sm:grid-cols-[5.5rem_minmax(0,1fr)_auto] sm:items-baseline sm:gap-3">
                   <span className="text-muted">{event.label}</span>
-                  <a href={event.url} className="truncate font-bold underline-offset-[3px] hover:underline" target="_blank" rel="noreferrer">
+                  <a href={event.url} className="truncate font-bold underline-offset-[3px] hover:underline" target="_blank" rel="noreferrer noopener">
                     {event.repo.replace(`${profile.githubHandle}/`, "")}
                   </a>
                   <time className="text-[13px] text-muted" dateTime={event.date}>
@@ -34,7 +34,7 @@ export function GithubActivity({ data }: { data: GithubActivity }) {
             {data.repos.map((repo) => (
               <li key={repo.name} className="border-t border-line py-3">
                 <div className="flex items-baseline justify-between gap-4">
-                  <a href={repo.url} className="font-bold underline-offset-[3px] hover:underline" target="_blank" rel="noreferrer">
+                  <a href={repo.url} className="font-bold break-words underline-offset-[3px] hover:underline" target="_blank" rel="noreferrer noopener">
                     {repo.name}
                   </a>
                   <time className="shrink-0 text-[13px] text-muted" dateTime={repo.pushedAt}>
@@ -49,7 +49,7 @@ export function GithubActivity({ data }: { data: GithubActivity }) {
       ) : (
         <p className="text-muted">
           {data.message}{" "}
-          <a className="text-ink underline-offset-[3px] hover:underline" href={profile.github}>
+            <a className="text-ink underline-offset-[3px] hover:underline" href={profile.github} target="_blank" rel="noreferrer noopener">
             Open the profile
           </a>
           .

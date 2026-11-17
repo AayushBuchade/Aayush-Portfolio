@@ -14,11 +14,10 @@ export function SelectedWork() {
             <WorkLink
               key={project.slug}
               href={`/work/${project.slug}`}
-              label={`${project.name} case study`}
               className="group relative block aspect-[4/3] overflow-hidden rounded-[6px] border border-line bg-soft"
             >
               <ProjectCover project={project} />
-              <span className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-full bg-paper px-4 py-3 transition duration-300 group-hover:translate-y-0 group-focus-visible:translate-y-0 motion-reduce:translate-y-0">
+              <span aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 translate-y-full bg-paper px-4 py-3 transition duration-300 group-hover:translate-y-0 group-focus-visible:translate-y-0 motion-reduce:translate-y-0">
                 <span className="block text-[13px] font-bold">{project.name}</span>
                 <span className="mt-0.5 block text-[13px] text-muted">{project.status}</span>
               </span>

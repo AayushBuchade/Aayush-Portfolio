@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { HashLink } from "@/components/hash-link";
 import { ThemeToggle } from "@/components/theme-toggle";
 
 export function SiteFrame({ children }: { children: React.ReactNode }) {
@@ -26,12 +26,12 @@ export function SiteFrame({ children }: { children: React.ReactNode }) {
             <span className="h-1.5 w-1.5 rounded-full bg-[#2f6f45]" aria-hidden />
             Open to roles
           </p>
-          <Link
+          <HashLink
             href="/#connect"
             className="flex items-center bg-ink px-6 text-[13px] font-bold tracking-[0.04em] text-paper uppercase sm:px-8"
           >
             Let&apos;s talk
-          </Link>
+          </HashLink>
         </div>
       </footer>
     </>
