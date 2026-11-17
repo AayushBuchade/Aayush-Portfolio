@@ -1,0 +1,66 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --font-mono: var(--font-plex), ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-soft: var(--soft);
+}
+
+:root {
+  --paper: #f5f5f0;
+  --ink: #0a0a0a;
+  --muted: rgb(10 10 10 / 0.62);
+  --line: rgb(10 10 10 / 0.12);
+  --soft: rgb(10 10 10 / 0.045);
+  color-scheme: light;
+}
+
+.dark {
+  --paper: #121211;
+  --ink: #f3f3ee;
+  --muted: rgb(243 243 238 / 0.64);
+  --line: rgb(243 243 238 / 0.14);
+  --soft: rgb(243 243 238 / 0.06);
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-bottom: 4.5rem;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-plex), ui-monospace, monospace;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+:focus-visible {
+  outline: 1px solid var(--ink);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@supports (view-transition-name: none) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 280ms;
+    animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
